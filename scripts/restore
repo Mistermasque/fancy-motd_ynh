@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+#=================================================
+# GENERIC START
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
+source /usr/share/yunohost/helpers
+
+#=================================================
+# RESTORE THE APP MAIN DIR
+#=================================================
+ynh_script_progression --message="Restoring config files..." --weight=1
+
+ynh_restore_file --origin_path="$install_dir"
+
+ynh_script_progression --message="Install motd config..." --weight=1
+
+ln -sfn "$install_dir/motd.sh" "/etc/update-motd.d/30-fancy-motd"
+
+ynh_script_progression --message="Setting permissions..." --weight=1
+chown -R root:root "$install_dir"
+chmod +rx "$install_dir"
+chmod +rx "$install_dir/motd.sh"
+chmod +rx "$install_dir/modules/*"
+
+#=================================================
+# END OF SCRIPT
+#=================================================
+
+ynh_script_progression --message="Restoration completed for $app" --last

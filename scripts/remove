@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+#=================================================
+# GENERIC START
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
+source /usr/share/yunohost/helpers
+
+#=================================================
+# REMOVE ANTIGEN LOADING SCRIPT
+#=================================================
+ynh_script_progression --message="Remove fancy-motd configuration..." --weight=1
+
+ynh_secure_remove --file="/etc/update-motd.d/30-fancy-motd"
+
+if [[ -f  /etc/motd.disabled ]]; then
+    if [[ ! -f /etc/motd ]]; then
+        mv /etc/motd.disabled /etc/motd
+    else
+        rm -f /etc/motd.disabled
+    fi
+fi
+
+#=================================================
+# END OF SCRIPT
+#=================================================
+
+ynh_script_progression --message="Removal of $app completed" --last

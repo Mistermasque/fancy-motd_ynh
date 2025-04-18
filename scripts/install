@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+#=================================================
+# GENERIC START
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
+source /usr/share/yunohost/helpers
+
+ynh_abort_if_errors
+
+#=================================================
+# DOWNLOAD, CHECK AND UNPACK SOURCE
+#=================================================
+ynh_script_progression "Setting up source files..."
+
+# Download, check integrity, uncompress and patch the source from manifest.toml
+ynh_setup_source --dest_dir="$install_dir"
+
+#=================================================
+# SPECIFIC SETUP
+#=================================================
+# INSTALL FANCY MOTD CONFIG
+#=================================================
+ynh_script_progression --message="Install motd config..." --weight=1
+
+ynh_add_config --template="config" --destination="$install_dir/config.sh"
+chmod o+r "$install_dir/config.sh"
+
+ln -sfn "$install_dir/motd.sh" "/etc/update-motd.d/30-fancy-motd"
+
+ynh_script_progression --message="Setting permissions..." --weight=1
+chown -R root:root "$install_dir"
+chmod -R +rx "$install_dir"
+
+if [[ $disable_default_motd == "1" ]]; then
+    if [[ -f /etc/motd ]]; then
+        mv /etc/motd /etc/motd.disabled
+    fi
+fi
+
+#=================================================
+# END OF SCRIPT
+#=================================================
+
+ynh_script_progression --message="Installation of $app completed" --last

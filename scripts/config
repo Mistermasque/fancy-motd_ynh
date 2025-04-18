@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+source /usr/share/yunohost/helpers
+
+ynh_abort_if_errors
+
+#=================================================
+# SPECIFIC GETTERS FOR TOML SHORT KEY
+#=================================================
+
+
+#=================================================
+# SPECIFIC VALIDATORS FOR TOML SHORT KEYS
+#=================================================
+
+
+#=================================================
+# SPECIFIC SETTERS FOR TOML SHORT KEYS
+#=================================================
