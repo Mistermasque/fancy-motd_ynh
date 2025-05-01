@@ -24,6 +24,7 @@ chown -R root:root "$install_dir"
 chmod -R -x "$install_dir"
 chmod -R u=rwX,g=rX,o=rX "$install_dir"
 chmod +x "$install_dir/motd.sh"
+chmod +x "$install_dir/modules/"*
 
 #=================================================
 # END OF SCRIPT

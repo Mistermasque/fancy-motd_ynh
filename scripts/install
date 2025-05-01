@@ -33,6 +33,7 @@ chown -R root:root "$install_dir"
 chmod -R -x "$install_dir"
 chmod -R u=rwX,g=rX,o=rX "$install_dir"
 chmod +x "$install_dir/motd.sh"
+chmod +x "$install_dir/modules/"*
 
 if [[ $disable_default_motd == "1" ]]; then
     if [[ -f /etc/motd ]]; then
