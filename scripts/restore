@@ -21,9 +21,9 @@ ln -sfn "$install_dir/motd.sh" "/etc/update-motd.d/30-fancy-motd"
 
 ynh_script_progression --message="Setting permissions..." --weight=1
 chown -R root:root "$install_dir"
-chmod +rx "$install_dir"
-chmod +rx "$install_dir/motd.sh"
-chmod +rx "$install_dir/modules/*"
+chmod -R -x "$install_dir"
+chmod -R u=rwX,g=rX,o=rX "$install_dir"
+chmod +x "$install_dir/motd.sh"
 
 #=================================================
 # END OF SCRIPT

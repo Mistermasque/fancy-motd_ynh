@@ -42,8 +42,8 @@ ram.runtime = "50M"
     autoupdate.strategy = "latest_github_commit"
 
     [resources.install_dir]
-    owner = "root:rwx"
-    group = "root:rx"
+    owner = "root:rwX"
+    group = "root:rX"
 
     [resources.apt]
     packages = [

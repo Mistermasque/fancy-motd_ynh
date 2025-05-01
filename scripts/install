@@ -25,13 +25,14 @@ ynh_setup_source --dest_dir="$install_dir"
 ynh_script_progression --message="Install motd config..." --weight=1
 
 ynh_add_config --template="config" --destination="$install_dir/config.sh"
-chmod o+r "$install_dir/config.sh"
 
 ln -sfn "$install_dir/motd.sh" "/etc/update-motd.d/30-fancy-motd"
 
 ynh_script_progression --message="Setting permissions..." --weight=1
 chown -R root:root "$install_dir"
-chmod -R +rx "$install_dir"
+chmod -R -x "$install_dir"
+chmod -R u=rwX,g=rX,o=rX "$install_dir"
+chmod +x "$install_dir/motd.sh"
 
 if [[ $disable_default_motd == "1" ]]; then
     if [[ -f /etc/motd ]]; then
