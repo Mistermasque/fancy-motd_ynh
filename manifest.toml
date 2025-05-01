@@ -37,8 +37,8 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://github.com/bcyran/fancy-motd/archive/2391e22c77305b9adefcb136ae5c2b8490e187e4.zip"
-    sha256 = "51bdde5ee589f9b2b7b3d921ddf1af314d7add2af980bc5fe0bf0ffa6a9abe6b"
+    url = "https://github.com/bcyran/fancy-motd/archive/444ac47ef24269a53f71ca140485b83fa19fb340.zip"
+    sha256 = "5d892e4e27b345aff3328f15560366d0118640e64666bc5b4ba309a613e3de2a"
     autoupdate.strategy = "latest_github_commit"
 
     [resources.install_dir]
