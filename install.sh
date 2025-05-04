@@ -3,7 +3,7 @@
 # Fancy MOTD install script for a YunoHost server
 set -euo pipefail
 
-declare -r INSTALL_DIR='/opt/fancy_motd'
+declare -r INSTALL_DIR='/usr/local/share/fancy_motd'
 declare -r FANCY_MOTD_SOURCE='https://github.com/bcyran/fancy-motd/archive/refs/heads/master.zip'
 declare -r FANCY_MOTD_YNH_SOURCE='https://github.com/Mistermasque/fancy-motd_ynh/archive/refs/heads/main.zip'
 
@@ -11,11 +11,10 @@ declare -r FANCY_MOTD_YNH_SOURCE='https://github.com/Mistermasque/fancy-motd_ynh
 usage() {
     cat << USAGE
 Usage : 
-    sudo -v ; https://github.com/Mistermasque/fancy-motd_ynh/blob/main/install.sh 2>/dev/null | sudo bash [OPTIONS]
+    sudo -v ; curl -s https://raw.githubusercontent.com/Mistermasque/fancy-motd_ynh/refs/heads/main/install.sh 2>/dev/null | sudo bash [-s uninstall]
 
 OPTIONS :
-    -h : Show this message
-    -u : Execute uninstallation instead of installation
+    -s uninstall : Execute uninstallation instead of installation
 USAGE
 }
 
@@ -145,22 +144,14 @@ if ! type yunohost > /dev/null 2>&1; then
     exit 1
 fi
 
-while getopts 'uh' arg; do
-    case ${arg} in
-    h)
-        usage
-        exit 0
-        ;;
-    u)
-        do_uninstall
-        exit 0
-        ;;
-    *)
-        echo "Unknown option '${arg}'" >&2
-        exit 1
-        ;;
-    esac
-done
+#check for uninstall flag
+if [ -n "$1" ] && [ "$1" != "uninstall" ]; then
+    usage
+fi
 
+if [ -n "$1" ]; then
+    do_uninstall
+    exit 0
+fi
 
 do_install

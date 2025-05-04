@@ -9,7 +9,7 @@
 Connect to your YunoHost Server throught ssh.
 And call install script (you need to be root) :
 ```bash
-curl -s https://github.com/Mistermasque/fancy-motd_ynh/blob/main/install.sh 2>/dev/null | bash
+curl -s https://raw.githubusercontent.com/Mistermasque/fancy-motd_ynh/refs/heads/main/install.sh 2>/dev/null | bash
 ```
 
 ## Uninstall instruction
@@ -17,5 +17,5 @@ curl -s https://github.com/Mistermasque/fancy-motd_ynh/blob/main/install.sh 2>/d
 Connect to your YunoHost Server throught ssh.
 And call install script with -u option (you need to be root) :
 ```bash
-curl -s https://github.com/Mistermasque/fancy-motd_ynh/blob/main/install.sh 2>/dev/null | bash -u
+curl -s https://raw.githubusercontent.com/Mistermasque/fancy-motd_ynh/refs/heads/main/install.sh 2>/dev/null | bash -s uninstall
 ```
