@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+declare -r INSTALL_DIR='/opt/fancy_motd'
+
 #=================================================
 # GENERIC START
 #=================================================
@@ -11,7 +13,7 @@ source /usr/share/yunohost/helpers
 #=================================================
 # DECLARE DATA AND CONF FILES TO BACKUP
 #=================================================
-ynh_print_info --message="Declaring files to be backed up..."
+ynh_print_info --message="Declaring files to be backed up for fancy-motd..."
 
 ### N.B. : the following 'ynh_backup' calls are only a *declaration* of what needs
 ### to be backuped and not an actual copy of any file. The actual backup that
@@ -22,10 +24,10 @@ ynh_print_info --message="Declaring files to be backed up..."
 # BACKUP THE CONF FILES
 #=================================================
 
-ynh_backup --src_path="$install_dir"
+ynh_backup --src_path="$INSTALL_DIR"
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_print_info --message="Backup script completed for $app. (YunoHost will then actually copy those files to the archive)."
+ynh_print_info --message="Backup script completed for fancy-motd. (YunoHost will then actually copy those files to the archive)."
