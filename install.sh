@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Fancy MOTD install script for a YunoHost server
-set -euo pipefail
+set -eo pipefail
 
 declare -r INSTALL_DIR='/usr/local/share/fancy_motd'
 declare -r FANCY_MOTD_SOURCE='https://github.com/bcyran/fancy-motd/archive/refs/heads/master.zip'
