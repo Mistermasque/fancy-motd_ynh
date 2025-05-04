@@ -145,11 +145,12 @@ if ! type yunohost > /dev/null 2>&1; then
 fi
 
 #check for uninstall flag
-if [ -n "$1" ] && [ "$1" != "uninstall" ]; then
+flag=${1-}
+if [[ -n "$flag" ]] && [[ "$flag" != "uninstall" ]]; then
     usage
 fi
 
-if [ -n "$1" ]; then
+if [ -n "$flag" ]; then
     do_uninstall
     exit 0
 fi
