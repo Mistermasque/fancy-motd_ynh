@@ -86,6 +86,10 @@ do_install() {
     mkdir -p "$INSTALL_DIR/modules"
     cp ./modules/* "$INSTALL_DIR/modules/"
 
+    echo "Install apt dependencies"
+    apt install --yes smartmontools figlet lm-sensors bc 
+
+
     echo "Install specific conf to YunoHost"
 
     mkdir -p /etc/yunohost/hooks.d/{backup,restore}

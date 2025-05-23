@@ -14,7 +14,7 @@ source /usr/share/yunohost/helpers
 # RESTORE THE APP MAIN DIR
 #=================================================
 ynh_script_progression --message="Installing packages..." --weight=1
-ynh_install_app_dependencies figlet curl smartmontools lm-sensors
+ynh_install_app_dependencies bc figlet curl smartmontools lm-sensors
 
 ynh_script_progression --message="Restoring fancy-motd..." --weight=1
 ynh_restore_file --origin_path="$INSTALL_DIR"
