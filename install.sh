@@ -87,7 +87,7 @@ do_install() {
     cp ./modules/* "$INSTALL_DIR/modules/"
 
     echo "Install apt dependencies"
-    apt install --yes smartmontools figlet lm-sensors bc 
+    apt install --yes smartmontools figlet lm-sensors bc
 
 
     echo "Install specific conf to YunoHost"
@@ -117,6 +117,8 @@ do_install() {
     #cleanup
     cd /
     rm -rf "$tmp_dir"
+
+    echo "Install completed in $INSTALL_DIR"
 }
 
 do_uninstall() {
@@ -133,6 +135,10 @@ do_uninstall() {
     rm -f "/etc/yunohost/hooks.d/backup/40_conf_fancy-motd"
     rm -f "/etc/yunohost/hooks.d/restore/40_conf_fancy-motd"
     rm -rf "$INSTALL_DIR"
+
+    echo "Uninstall completed"
+    echo "Fancy MOTD installed thoses dependencies : smartmontools figlet lm-sensors bc"
+    echo "You need to uninstall them if is not needed (apt remove ....)"
 }
 
 # Check if I am root
